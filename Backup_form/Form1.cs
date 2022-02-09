@@ -139,5 +139,10 @@ namespace Backup_form
         {
             CreateDir();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
