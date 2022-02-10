@@ -8,3 +8,13 @@ C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\obj\Debug\Ba
 C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\obj\Debug\Backup_form.csproj.CoreCompileInputs.cache
 C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\obj\Debug\Backup_form.exe
 C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\obj\Debug\Backup_form.pdb
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\bin\Debug\Backup_form.exe.config
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\bin\Debug\Backup_form.exe
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\bin\Debug\Backup_form.pdb
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.csprojAssemblyReference.cache
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.Form1.resources
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.Properties.Resources.resources
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.csproj.GenerateResource.cache
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.csproj.CoreCompileInputs.cache
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.exe
+C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\obj\Debug\Backup_form.pdb

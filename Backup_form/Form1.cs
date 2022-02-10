@@ -26,14 +26,8 @@ namespace Backup_form
 
         }
 
-        //private void TimerDelete_Tick(object sender, EventArgs e)
-        //{
 
-        //    DeleteFile(Environment.CurrentDirectory + "\\Logs\\", 7);  //刪除該目錄下 超過 7天的文件
-
-        //}
-
-        private void DeleteFile(string fileDirect, int saveDay)
+        private void DeleteAndCompressFile(string fileDirect, int saveDay)
         {
 
             //string startPath = @".\start";
@@ -72,7 +66,26 @@ namespace Backup_form
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DeleteFile(Environment.CurrentDirectory + "\\CYMC_LOG\\ai_mgr\\", 7);  //刪除該目錄下 超過 7天的文件
+            try
+            {
+                if (textBox1.Text.ToString().All(char.IsDigit))
+                {
+                    Console.WriteLine("The Given String is a Number.");
+                    DeleteAndCompressFile(Environment.CurrentDirectory + "\\CYMC_LOG\\ai_mgr\\", Int32.Parse(textBox1.Text));  
+                }
+                else
+                {
+                    Console.WriteLine("The Given String is Not a Number.");
+                    throw new InvalidOperationException("The Given String is Not a Number.");
+                }
+            }
+            catch (Exception)
+            {
+
+                Console.WriteLine("The Given String is Not a Number.");
+                MessageBox.Show("The Given String is Not a Number.");
+            }
+          
         }
         private void Zip(string file_Full_Name, string file_Name, string fileDirect)
         {
@@ -139,5 +152,26 @@ namespace Backup_form
         {
             CreateDir();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            if (textBox1.Text.ToString().All(char.IsDigit))
+            {
+                Console.WriteLine("The Given String is a Number.");
+            }
+            else
+            {
+                Console.WriteLine("The Given String is Not a Number.");
+            }
+
+        }
+
+       
     }
 }
