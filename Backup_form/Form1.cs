@@ -26,41 +26,27 @@ namespace Backup_form
 
         }
 
-
         private void DeleteAndCompressFile(string fileDirect, int saveDay)
         {
-
-            //string startPath = @".\start";
-            //string zipPath = @".\result.zip";
-            //string extractPath = @".\extract";
-
             try
             {
                 string[] dirs = Directory.GetDirectories(fileDirect, "*", SearchOption.TopDirectoryOnly);
-               // Console.WriteLine("The number of directories starting with p is {0}.", dirs.Length);
                 foreach (string dir in dirs)
                 {
                     Console.WriteLine(dir);
                     DateTime nowTime = DateTime.Now;
-
                     //string[] files = Directory.GetFiles(fileDirect, "*.log", SearchOption.AllDirectories);  //獲取該目錄下所有 .log文件
                     string[] files = Directory.GetFiles(dir, "*.log");  //獲取該目錄下所有 .log文件
                     foreach (string file in files)
                     {
                         CreateDir();
-
                         FileInfo fileInfo = new FileInfo(file);
-                        TimeSpan t = nowTime - fileInfo.LastWriteTime;  //當前時間  減去 文件創建時間
+                        TimeSpan t = nowTime - fileInfo.CreationTime;  //當前時間  減去 文件創建時間
                         int day = t.Days;
                         if (day > saveDay)   //保存的時間 ；  單位：天
                         {
                             Zip(fileInfo.FullName, fileInfo.Name, dir);
                             File.Delete(file);  //刪除超過時間的文件
-
-                            //MessageBox.Show(fileInfo.FullName);
-                            //MessageBox.Show(fileInfo.Name);
-                            //ZipFile.CreateFromDirectory(startPath, zipPath);
-                            //ZipFile.ExtractToDirectory(zipPath, extractPath);
                         }
                     }
                 }
@@ -69,12 +55,7 @@ namespace Backup_form
             {
                 Console.WriteLine("The process failed: {0}", expc.ToString());
             }
-           
-            
         }
-
-
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             //DeleteFile(Environment.CurrentDirectory + "\\CYMC_LOG\\ai_mgr\\", 7);  //刪除該目錄下 超過 7天的文件
@@ -116,15 +97,6 @@ namespace Backup_form
             process.StartInfo.FileName = @".\tools\7z.exe";
             process.StartInfo.Arguments = @"a -tzip C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\bin\Debug\CYMC_LOG\ai_mgr\backuplog\test.zip C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\bin\Debug\CYMC_LOG\ai_mgr\test.log";
             process.Start();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            //Process process = new Process();
-            //process.StartInfo.FileName = @"C:\Program Files\7-zip\7z.exe";
-            //process.StartInfo.Arguments = @"e E:\DannyChang.zip -oE:\ -y";
-            //process.Start();
-            Unzip(@"C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\bin\Debug\CYMC_LOG\ai_mgr\", @"test");
         }
 
         private void Unzip(string fileDirect, string file_Name)
@@ -169,11 +141,6 @@ namespace Backup_form
             CreateDir();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
@@ -184,33 +151,6 @@ namespace Backup_form
             else
             {
                 Console.WriteLine("The Given String is Not a Number.");
-            }
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            //string[] files = Directory.GetFiles(@"C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\bin\Debug\CYMC_LOG", "*");  //獲取該目錄下所有 .log文件
-            //Console.WriteLine("The Given String is Not a Number.");
-
-            //DirectoryInfo di = new DirectoryInfo(@"C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\bin\Debug\CYMC_LOG");
-            //Console.WriteLine("No search pattern returns:");
-            //foreach (var fi in di.GetFiles())
-            //{
-            //    Console.WriteLine(fi.Name);
-            //}
-            try
-            {
-                string[] dirs = Directory.GetDirectories(@"C:\Users\ASUS\wayne\2.Technique\Coding\9.github_repos\Backup_form\Backup_form\bin\Debug\CYMC_LOG", "*", SearchOption.TopDirectoryOnly);
-                Console.WriteLine("The number of directories starting with p is {0}.", dirs.Length);
-                foreach (string dir in dirs)
-                {
-                    Console.WriteLine(dir);
-                }
-            }
-            catch (Exception expc)
-            {
-                Console.WriteLine("The process failed: {0}", expc.ToString());
             }
         }
     }

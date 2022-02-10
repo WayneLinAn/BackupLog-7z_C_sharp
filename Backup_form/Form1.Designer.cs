@@ -79,7 +79,7 @@ namespace Backup_form
             this.label2.Size = new System.Drawing.Size(172, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "想要處理幾天前的資料:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+           // this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Form1
             // 
