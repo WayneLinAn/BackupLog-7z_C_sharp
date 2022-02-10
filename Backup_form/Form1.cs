@@ -37,11 +37,13 @@ namespace Backup_form
                     DateTime nowTime = DateTime.Now;
                     //string[] files = Directory.GetFiles(fileDirect, "*.log", SearchOption.AllDirectories);  //獲取該目錄下所有 .log文件
                     string[] files = Directory.GetFiles(dir, "*.log");  //獲取該目錄下所有 .log文件
+                    CreateDir(dir);
+
                     foreach (string file in files)
                     {
-                        CreateDir();
                         FileInfo fileInfo = new FileInfo(file);
-                        TimeSpan t = nowTime - fileInfo.CreationTime;  //當前時間  減去 文件創建時間
+                        //TimeSpan t = nowTime - fileInfo.CreationTime;  //當前時間  減去 文件創建時間
+                        TimeSpan t = nowTime - fileInfo.LastWriteTime;  //當前時間  減去 文件創建時間
                         int day = t.Days;
                         if (day > saveDay)   //保存的時間 ；  單位：天
                         {
@@ -91,13 +93,6 @@ namespace Backup_form
             process.StartInfo.Arguments = @"a -tzip "+ fileDirect+ "\\backuplog\\" + file_Name+".zip "+ file_Full_Name;
             process.Start();
         }
-            private void button2_Click(object sender, EventArgs e)
-        {
-            Process process = new Process();
-            process.StartInfo.FileName = @".\tools\7z.exe";
-            process.StartInfo.Arguments = @"a -tzip C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\bin\Debug\CYMC_LOG\ai_mgr\backuplog\test.zip C:\Users\ASUS\wayne\2.Technique\Coding\8.C#\Backup_form\Backup_form\bin\Debug\CYMC_LOG\ai_mgr\test.log";
-            process.Start();
-        }
 
         private void Unzip(string fileDirect, string file_Name)
         {
@@ -107,18 +102,17 @@ namespace Backup_form
             process.Start();
         }
 
-         public void CreateDir()
+         public void CreateDir(string dir)
         {
             // Specify the directory you want to manipulate.
-            string path = @".\CYMC_LOG\ai_mgr\backuplog";
-
+            string path = dir+@"\backuplog";
             try
             {
                 // Determine whether the directory exists.
                 if (Directory.Exists(path))
                 {
                     Console.WriteLine("That path exists already.");
-                    return;
+                    //return;
                 }
 
                 // Try to create the directory.
@@ -133,12 +127,7 @@ namespace Backup_form
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
-            finally { }
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            CreateDir();
+           // finally { }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
